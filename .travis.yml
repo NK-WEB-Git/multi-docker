@@ -3,7 +3,7 @@ services:
   - docker
 
 before_install:
-  - docker build -f ./client/Dockerfile.dev -t nkdocker/react-test ./client
+  - docker build -f ./client/Dockerfile.dev ./client
 
 script:
   - docker run -e CI=true nkdocker/react-test npm test
