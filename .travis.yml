@@ -19,3 +19,15 @@ after_success:
   - docker push nkdocker/multi-server
   - docker push nkdocker/multi-nginx
   - docker push nkdocker/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: eu-west-3
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-eu-west-3-382120047160
+  bucket_path: docker-multi
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
